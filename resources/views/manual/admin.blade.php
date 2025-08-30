@@ -27,9 +27,15 @@
             <button onclick="window.print()" class="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600">
                 <i class="fas fa-print mr-2"></i>Print Manual
             </button>
-            <a href="{{ route('manual') }}" class="bg-secondary text-white px-4 py-2 rounded-md hover:bg-blue-600">
-                <i class="fas fa-arrow-left mr-2"></i>Kembali
-            </a>
+            @if(auth()->user()->isAdmin() && (request()->is('admin*') || request()->get('mode') === 'admin'))
+                <a href="{{ route('admin.dashboard') }}" class="bg-secondary text-white px-4 py-2 rounded-md hover:bg-blue-600">
+                    <i class="fas fa-arrow-left mr-2"></i>Kembali ke Admin
+                </a>
+            @else
+                <a href="{{ route('manual') }}" class="bg-secondary text-white px-4 py-2 rounded-md hover:bg-blue-600">
+                    <i class="fas fa-arrow-left mr-2"></i>Kembali
+                </a>
+            @endif
         </div>
     </div>
 

@@ -7,9 +7,17 @@
     <!-- Header -->
     <div class="flex justify-between items-center">
         <h1 class="text-3xl font-bold text-dark">📚 Manual Book</h1>
-        <a href="{{ route('dashboard') }}" class="bg-secondary text-white px-4 py-2 rounded-md hover:bg-blue-600">
-            <i class="fas fa-arrow-left mr-2"></i>Kembali ke Dashboard
-        </a>
+        <div class="flex space-x-2 no-print">
+            @if(auth()->user()->isAdmin() && (request()->is('admin*') || request()->get('mode') === 'admin'))
+                <a href="{{ route('admin.dashboard') }}" class="bg-secondary text-white px-4 py-2 rounded-md hover:bg-blue-600">
+                    <i class="fas fa-arrow-left mr-2"></i>Kembali ke Admin
+                </a>
+            @else
+                <a href="{{ route('dashboard') }}" class="bg-secondary text-white px-4 py-2 rounded-md hover:bg-blue-600">
+                    <i class="fas fa-arrow-left mr-2"></i>Kembali ke Dashboard
+                </a>
+            @endif
+        </div>
     </div>
 
     <!-- Introduction -->
@@ -19,6 +27,14 @@
             Manual Book ini dirancang untuk membantu Anda memahami dan menggunakan Logbook System dengan maksimal. 
             Sistem ini menyediakan panduan lengkap untuk karyawan dan admin dalam mengelola aktivitas kerja sehari-hari.
         </p>
+        @if(auth()->user()->isAdmin() && (request()->is('admin*') || request()->get('mode') === 'admin'))
+            <div class="bg-blue-50 border-l-4 border-blue-400 p-4 mb-4">
+                <p class="text-blue-800">
+                    <strong>👨‍💼 Mode Admin:</strong> Anda sedang dalam mode administrator. 
+                    Pilih manual yang sesuai dengan kebutuhan Anda.
+                </p>
+            </div>
+        @endif
         <div class="bg-light p-4 rounded-lg">
             <h3 class="font-semibold text-dark mb-2">📖 Apa yang akan Anda pelajari:</h3>
             <ul class="text-sm text-secondary space-y-1">
@@ -84,7 +100,7 @@
             </div>
             
             @if(auth()->user()->isAdmin())
-                <a href="{{ route('manual.admin') }}" class="block w-full bg-secondary text-white text-center py-3 rounded-md hover:bg-blue-600 transition-colors">
+                <a href="{{ route('manual.admin') }}{{ (request()->is('admin*') || request()->get('mode') === 'admin') ? '?mode=admin' : '' }}" class="block w-full bg-secondary text-white text-center py-3 rounded-md hover:bg-blue-600 transition-colors">
                     <i class="fas fa-cogs mr-2"></i>Buka Manual Admin
                 </a>
             @else

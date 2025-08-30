@@ -34,6 +34,12 @@
                     📊 Lihat analisis performa bulan ini
                 </div>
             </a>
+            <a href="{{ route('manual') }}" class="bg-purple-500 text-white px-4 py-2 rounded-md hover:bg-purple-600 relative group">
+                <i class="fas fa-book mr-2"></i>Manual
+                <div class="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 bg-gray-800 text-white text-xs p-2 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap">
+                    📚 Buka panduan penggunaan sistem
+                </div>
+            </a>
         </div>
     </div>
 

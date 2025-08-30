@@ -56,6 +56,19 @@ Route::middleware('auth')->group(function () {
         Route::get('/{weeklyReport}', [ReportController::class, 'show'])->name('show');
     });
     
+    // Manual Book Routes
+    Route::get('/manual', function () {
+        return view('manual.index');
+    })->name('manual');
+    
+    Route::get('/manual/employee', function () {
+        return view('manual.employee');
+    })->name('manual.employee');
+    
+    Route::get('/manual/admin', function () {
+        return view('manual.admin');
+    })->name('manual.admin');
+    
     Route::prefix('admin')->name('admin.')->middleware('admin')->group(function () {
         Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
         

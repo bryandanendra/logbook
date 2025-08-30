@@ -47,6 +47,9 @@
                                     <a href="{{ route('admin.analytics') }}" class="text-white hover:text-primary px-3 py-2 rounded-md text-sm font-medium">
                                         <i class="fas fa-chart-line mr-2"></i>Analytics
                                     </a>
+                                    <a href="{{ route('manual') }}" class="text-white hover:text-primary px-3 py-2 rounded-md text-sm font-medium">
+                                        <i class="fas fa-book mr-2"></i>Manual
+                                    </a>
                                     <a href="{{ route('dashboard') }}" class="text-primary bg-white px-3 py-2 rounded-md text-sm font-medium">
                                         <i class="fas fa-user mr-2"></i>Mode Karyawan
                                     </a>
@@ -63,6 +66,9 @@
                                     </a>
                                     <a href="{{ route('reports.index') }}" class="text-white hover:text-primary px-3 py-2 rounded-md text-sm font-medium">
                                         <i class="fas fa-chart-bar mr-2"></i>Laporan
+                                    </a>
+                                    <a href="{{ route('manual') }}" class="text-white hover:text-primary px-3 py-2 rounded-md text-sm font-medium">
+                                        <i class="fas fa-book mr-2"></i>Manual
                                     </a>
                                     @if(auth()->user()->isAdmin())
                                         <a href="{{ route('admin.dashboard') }}" class="text-primary bg-white px-3 py-2 rounded-md text-sm font-medium">

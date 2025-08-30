@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('work_sessions', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->datetime('start_time');
+            $table->datetime('end_time')->nullable();
+            $table->enum('status', ['active', 'completed'])->default('active');
+            $table->text('notes')->nullable();
             $table->timestamps();
         });
     }

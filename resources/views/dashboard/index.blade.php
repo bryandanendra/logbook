@@ -12,9 +12,17 @@
                     <i class="fas fa-play mr-2"></i>Mulai Kerja
                 </a>
             @else
-                <span class="bg-green-500 text-white px-4 py-2 rounded-md">
-                    <i class="fas fa-clock mr-2"></i>Sedang Bekerja
-                </span>
+                <div class="flex space-x-2">
+                    <span class="bg-green-500 text-white px-4 py-2 rounded-md">
+                        <i class="fas fa-clock mr-2"></i>Sedang Bekerja
+                    </span>
+                    <form action="{{ route('work-sessions.end', $activeSession) }}" method="POST" class="inline">
+                        @csrf
+                        <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600" onclick="return confirm('Yakin ingin mengakhiri sesi kerja?')">
+                            <i class="fas fa-stop mr-2"></i>Selesai Kerja
+                        </button>
+                    </form>
+                </div>
             @endif
             <a href="{{ route('tasks.today') }}" class="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 relative group">
                 <i class="fas fa-calendar-day mr-2"></i>Hari Ini
